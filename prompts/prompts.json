@@ -1,0 +1,197 @@
+{
+  "genqr": {
+    "description": "GenQR: generate comma-separated expansion keywords for a query.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Produce keywords that would help retrieve relevant documents for the following query:\n\"{query}\"\nKeywords:"}
+    ]
+  },
+
+  "genqr_ens_1": {
+    "description": "GenQR Ensemble instruction variant 1.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Suggest expansion terms that improve retrieval for the query:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_2": {
+    "description": "GenQR Ensemble instruction variant 2.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Propose additional search terms to broaden results for:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_3": {
+    "description": "GenQR Ensemble instruction variant 3.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Recommend useful expansion keywords to enrich the query:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_4": {
+    "description": "GenQR Ensemble instruction variant 4.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Provide relevant phrases that would maximize search effectiveness for:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_5": {
+    "description": "GenQR Ensemble instruction variant 5.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Generate valuable terms to supplement and expand the query:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_6": {
+    "description": "GenQR Ensemble instruction variant 6.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Identify keywords that would strengthen document retrieval for:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_7": {
+    "description": "GenQR Ensemble instruction variant 7.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Supply helpful expansion terms to improve search precision for:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_8": {
+    "description": "GenQR Ensemble instruction variant 8.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Offer beneficial keywords that increase retrieval quality for:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_9": {
+    "description": "GenQR Ensemble instruction variant 9.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "List meaningful expansion terms that enhance the search query:\n\"{query}\""}
+    ]
+  },
+  "genqr_ens_10": {
+    "description": "GenQR Ensemble instruction variant 10.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Output only comma-separated keywords. Do not produce sentences or explanations."},
+      {"role": "user",   "content": "Contribute expansion terms that complement and improve results for:\n\"{query}\""}
+    ]
+  },
+
+  "q2k": {
+    "description": "Query2Keyword: single-call keyword list generation.",
+    "messages": [
+      {"role": "user", "content": "Generate a list of keywords for the following query: {query}"}
+    ]
+  },
+
+  "q2d_zs": {
+    "description": "Query2Doc zero-shot: generate an answer-style passage.",
+    "messages": [
+      {"role": "user", "content": "Write a passage that answers the given query:\nQuery: {query}\nPassage:"}
+    ]
+  },
+  "q2d_fs": {
+    "description": "Query2Doc few-shot: generate a passage with in-context examples.",
+    "messages": [
+      {"role": "user", "content": "Write a passage that answers the given query:\n\n{examples}\n\nQuery: {query}\nPassage:"}
+    ]
+  },
+  "q2d_cot": {
+    "description": "Query2Doc chain-of-thought: answer with explicit reasoning.",
+    "messages": [
+      {"role": "user", "content": "Answer the following query:\n\n{query}\n\nGive the rationale before answering"}
+    ]
+  },
+
+  "qa_expand_subq": {
+    "description": "QA-Expand stage 1: decompose query into sub-questions.",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant. Given a query, generate 3 related sub-questions that someone might ask. Return them as a JSON object with keys question1, question2, question3."},
+      {"role": "user",   "content": "Generate sub-questions for: \"{query}\""}
+    ]
+  },
+  "qa_expand_answer": {
+    "description": "QA-Expand stage 2: answer the sub-questions.",
+    "messages": [
+      {"role": "system", "content": "You are a knowledgeable assistant. For each question provided in JSON, produce an informative document-style answer. Return a JSON object with keys answer1, answer2, answer3."},
+      {"role": "user",   "content": "Questions: {questions}"}
+    ]
+  },
+  "qa_expand_refine": {
+    "description": "QA-Expand stage 3: filter and refine answers.",
+    "messages": [
+      {"role": "system", "content": "You are an evaluation assistant. Given a query and candidate answers in JSON, keep only answers that are relevant and correct. Return a JSON object with the same keys; leave irrelevant answers empty."},
+      {"role": "user",   "content": "Query: \"{query}\"\nAnswers: {answers}"}
+    ]
+  },
+
+  "mugi": {
+    "description": "MUGI: generate a concise pseudo-passage for a query.",
+    "messages": [
+      {"role": "system", "content": "You are an AI that generates concise, informative, and clear passages on specific topics."},
+      {"role": "user",   "content": "Generate one passage that is relevant to the following query: '{query}'. The passage should be concise, informative, and clear."}
+    ]
+  },
+
+  "keqe": {
+    "description": "KEQE (knowledge-based passage generation for CSQE stage 1).",
+    "messages": [
+      {"role": "system", "content": "You are a helpful assistant."},
+      {"role": "user",   "content": "Please write a passage to answer the question\nQuestion: {query}\nPassage:"}
+    ]
+  },
+  "csqe": {
+    "description": "CSQE: extract key relevant sentences from retrieved documents.",
+    "messages": [
+      {"role": "system", "content": "You are a search assistant. Given a query and retrieved documents, identify documents relevant to the query, then extract the key sentences from each that contribute to their relevance."},
+      {"role": "user",   "content": "Query: \"how are some sharks warm blooded\"\nRetrieved documents:\n1. Most sharks are cold-blooded. Some, like the Mako and the Great white shark, are partially warm-blooded (they are endotherms). Actually the Salmon Shark is a warm-blooded shark.\n2. Are sharks cold-blooded or warm-blooded? Sharks have a reputation as cold-blooded. Nonetheless, sharks are, for the most part, efficient ectothermic predators.\n3. Great white sharks are some of the only warm blooded sharks. This allows them to swim in colder waters in addition to warm, tropical waters.\n4. Sharks' blood gives them turbo speed. Several species of shark and tuna have something special going on inside their bodies. Salmon sharks can elevate their body temperatures by up to 20 degrees compared to the surrounding water.\n\nExtract the key relevant sentences from the documents above."},
+      {"role": "assistant", "content": "Based on the query, here are the key sentences:\nDocument 1: \"Most sharks are cold-blooded. Some, like the Mako and the Great white shark, are partially warm-blooded (they are endotherms).\" \"Actually, the Salmon Shark is a warm-blooded shark.\"\nDocument 3: \"Great white sharks are some of the only warm-blooded sharks.\" \"This allows them to swim in colder waters in addition to warm, tropical waters.\"\nDocument 4: \"Salmon sharks can elevate their body temperatures by up to 20 degrees compared to the surrounding water.\""},
+      {"role": "user",   "content": "Query: \"{query}\"\nRetrieved documents:\n{contexts}\n\nExtract the key relevant sentences from the documents above."}
+    ]
+  },
+
+  "lamer_msmarco": {
+    "description": "LameR (MS MARCO / generic): synthesize an answering passage from retrieved contexts.",
+    "messages": [
+      {"role": "user", "content": "Given a question \"{query}\" and its possible answering passages (most of these passages are wrong) enumerated as:\n{contexts}\nplease write a correct answering passage."}
+    ]
+  },
+  "lamer_scifact": {
+    "description": "LameR (SciFact): synthesize a scientific paper passage.",
+    "messages": [
+      {"role": "user", "content": "Given a question \"{query}\" and its possible scientific paper passages (most of these passages are wrong) enumerated as:\n{contexts}\nplease write a correct scientific paper passage."}
+    ]
+  },
+  "lamer_arguana": {
+    "description": "LameR (ArguAna): synthesize a counter-argument passage.",
+    "messages": [
+      {"role": "user", "content": "Given a question \"{query}\" and its possible counter-argument passages (most of these passages are wrong) enumerated as:\n{contexts}\nplease write a correct counter-argument passage."}
+    ]
+  },
+  "lamer_covid": {
+    "description": "LameR (TREC-COVID): synthesize a scientific paper passage.",
+    "messages": [
+      {"role": "user", "content": "Given a question \"{query}\" and its possible scientific paper passages (most of these passages are wrong) enumerated as:\n{contexts}\nplease write a correct scientific paper passage."}
+    ]
+  },
+  "lamer_fiqa": {
+    "description": "LameR (FiQA): synthesize a financial article passage.",
+    "messages": [
+      {"role": "user", "content": "Given a question \"{query}\" and its possible answering financial article passages (most of these passages are wrong) enumerated as:\n{contexts}\nplease write a correct answering financial article passage."}
+    ]
+  },
+  "lamer_dbpedia": {
+    "description": "LameR (DBPedia): synthesize an answering passage.",
+    "messages": [
+      {"role": "user", "content": "Given a question \"{query}\" and its possible answering passages (most of these passages are wrong) enumerated as:\n{contexts}\nplease write a correct answering passage."}
+    ]
+  },
+  "lamer_news": {
+    "description": "LameR (TREC-News): synthesize a relevant passage.",
+    "messages": [
+      {"role": "user", "content": "Given a question \"{query}\" and its possible relevant passages (most of these passages are wrong) enumerated as:\n{contexts}\nplease write a correct relevant passage."}
+    ]
+  }
+}
+

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Environments
+venv/
+.venv/
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Project outputs
+outputs/
+results/
+runs/
+logs/
+*.log
+data/corpora/
+
+# Test scripts (not part of the framework)
+test_q2d_zs.py
+test_lamer.py
+

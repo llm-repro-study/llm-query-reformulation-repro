@@ -1,0 +1,136 @@
+# ================================================================
+#  Pyserini dataset registry — BM25 index names & weights
+# ================================================================
+#  This file documents the Pyserini prebuilt index names, topic/qrels
+#  references, and BM25 weighting (k1, b) for every dataset used in
+#  the reproducibility study.  The primary dataset catalogue is in
+#  src/data.py (DATASETS dict); this YAML serves as a human-readable
+#  reference and can be extended for additional datasets.
+#
+#  BM25 weights come from the Pyserini regression documentation.
+
+version: 1
+
+datasets:
+
+  # ── TREC Deep Learning (MS MARCO V1 passage) ───────────────────
+
+  dl19:
+    name: "TREC Deep Learning 2019 — Passage"
+    index:
+      bm25:   "msmarco-v1-passage"
+      splade: "msmarco-v1-passage-splade-pp-ed"
+      bge:    "msmarco-v1-passage.bge-base-en-v1.5"
+    topics: "dl19-passage"
+    qrels:  "dl19-passage"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.1000"]
+
+  dl20:
+    name: "TREC Deep Learning 2020 — Passage"
+    index:
+      bm25:   "msmarco-v1-passage"
+      splade: "msmarco-v1-passage-splade-pp-ed"
+      bge:    "msmarco-v1-passage.bge-base-en-v1.5"
+    topics: "dl20-passage"
+    qrels:  "dl20-passage"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.1000"]
+
+  dlhard:
+    name: "DL-HARD (subset of DL 2019/2020)"
+    index:
+      bm25:   "msmarco-v1-passage"
+      splade: "msmarco-v1-passage-splade-pp-ed"
+      bge:    "msmarco-v1-passage.bge-base-en-v1.5"
+    topics: "dl19-passage"  # queries loaded from external file
+    qrels:  null             # user supplies path
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.1000"]
+
+  # ── BEIR Datasets ──────────────────────────────────────────────
+
+  scifact:
+    name: "BEIR v1.0.0 — SciFact"
+    index:
+      bm25:   "beir-v1.0.0-scifact.flat"
+      splade: "beir-v1.0.0-scifact-splade-pp-ed"
+      bge:    "beir-v1.0.0-scifact.bge-base-en-v1.5"
+    topics: "beir-v1.0.0-scifact-test"
+    qrels:  "beir-v1.0.0-scifact-test"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.100"]
+
+  arguana:
+    name: "BEIR v1.0.0 — ArguAna"
+    index:
+      bm25:   "beir-v1.0.0-arguana.flat"
+      splade: "beir-v1.0.0-arguana-splade-pp-ed"
+      bge:    "beir-v1.0.0-arguana.bge-base-en-v1.5"
+    topics: "beir-v1.0.0-arguana-test"
+    qrels:  "beir-v1.0.0-arguana-test"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.100"]
+
+  covid:
+    name: "BEIR v1.0.0 — TREC-COVID"
+    index:
+      bm25:   "beir-v1.0.0-trec-covid.flat"
+      splade: "beir-v1.0.0-trec-covid-splade-pp-ed"
+      bge:    "beir-v1.0.0-trec-covid.bge-base-en-v1.5"
+    topics: "beir-v1.0.0-trec-covid-test"
+    qrels:  "beir-v1.0.0-trec-covid-test"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.100"]
+
+  fiqa:
+    name: "BEIR v1.0.0 — FiQA"
+    index:
+      bm25:   "beir-v1.0.0-fiqa.flat"
+      splade: "beir-v1.0.0-fiqa-splade-pp-ed"
+      bge:    "beir-v1.0.0-fiqa.bge-base-en-v1.5"
+    topics: "beir-v1.0.0-fiqa-test"
+    qrels:  "beir-v1.0.0-fiqa-test"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.100"]
+
+  dbpedia:
+    name: "BEIR v1.0.0 — DBPedia-Entity"
+    index:
+      bm25:   "beir-v1.0.0-dbpedia-entity.flat"
+      splade: "beir-v1.0.0-dbpedia-entity-splade-pp-ed"
+      bge:    "beir-v1.0.0-dbpedia-entity.bge-base-en-v1.5"
+    topics: "beir-v1.0.0-dbpedia-entity-test"
+    qrels:  "beir-v1.0.0-dbpedia-entity-test"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.100"]
+
+  news:
+    name: "BEIR v1.0.0 — TREC-NEWS"
+    index:
+      bm25:   "beir-v1.0.0-trec-news.flat"
+      splade: "beir-v1.0.0-trec-news-splade-pp-ed"
+      bge:    "beir-v1.0.0-trec-news.bge-base-en-v1.5"
+    topics: "beir-v1.0.0-trec-news-test"
+    qrels:  "beir-v1.0.0-trec-news-test"
+    bm25_weights:
+      k1: 0.9
+      b:  0.4
+    eval_metrics: ["ndcg_cut.10", "recall.100"]
+

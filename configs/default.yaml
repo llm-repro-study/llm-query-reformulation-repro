@@ -1,0 +1,90 @@
+# ================================================================
+#  Default experiment configuration
+# ================================================================
+#  Override any value via CLI flags or by pointing to a different
+#  config file with --config <path>.
+
+# ── LLM settings (shared across all methods) ────────────────────
+llm:
+  model: gpt-4.1               # gpt-4.1 | gpt-4.1-nano | qwen-72b | qwen-7b
+  max_tokens: 256
+  temperature: 0.0              # overridden per-method below where needed
+
+# ── Datasets to evaluate ────────────────────────────────────────
+datasets:
+  - dl19
+  - dl20
+  - dlhard
+  - scifact
+  - arguana
+  - covid
+  - fiqa
+  - dbpedia
+  - news
+
+# ── Retrievers to evaluate ──────────────────────────────────────
+retrievers:
+  - bm25
+  - splade
+  - bge
+
+# ── Method-specific parameters ──────────────────────────────────
+methods:
+  genqr:
+    num_calls: 5
+
+  genqr_ensemble:
+    query_repeats: 5
+
+  q2k:
+    query_repeats: 5
+
+  q2d_zs:
+    query_repeats: 5
+  q2d_fs:
+    query_repeats: 5
+    examples: |
+      Query: what is a physician assistant
+      Passage: A physician assistant (PA) is a licensed medical professional who holds an advanced degree and is trained to provide medical care under the supervision of a physician.
+
+      Query: cost of interior concrete flooring
+      Passage: The cost of interior concrete flooring can vary depending on several factors. On average, the cost can range from $2 to $12 per square foot.
+  q2d_cot:
+    query_repeats: 5
+
+  qa_expand:
+    num_subquestions: 3
+    query_repeats: 3
+
+  mugi:
+    num_docs: 5
+    adaptive_ratio: 5
+
+  csqe:
+    n_expansions: 2
+    context_k: 10
+
+  lamer:
+    num_passages: 5
+    context_k: 10
+    dataset: msmarco           # per-dataset override via CLI
+
+# ── Context retrieval for corpus-grounded methods ────────────────
+# CSQE and LameR retrieve top-k BM25 passages *before* prompting
+# the LLM.  These settings control that initial retrieval step.
+context_retrieval:
+  retriever: bm25              # only BM25 is used for context fetching
+  k: 10                        # number of passages fed to the LLM
+  threads: 16                  # threads for Pyserini batch_search
+
+# ── Retrieval settings (full evaluation runs) ───────────────────
+retrieval:
+  hits: 1000
+  threads: 16
+  batch_size: 512
+
+# ── Paths ───────────────────────────────────────────────────────
+paths:
+  prompts: prompts/prompts.json
+  output: outputs/
+
